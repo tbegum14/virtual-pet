@@ -28,4 +28,16 @@ describe("constructor", ()=>{
         pet.growUp()
         expect(pet.age).toEqual(2)
     })
+
+    test("growUp function increments hunger by 5", ()=>{
+        const pet = new Pet("Fido", 0)
+        pet.growUp()
+        expect(pet.hunger).toEqual(5)
+    })
+
+    test("growUp function decrements fitness by 3", ()=>{
+        const pet = new Pet("Fido", 0)
+        pet.growUp()
+        expect(pet.fitness).toEqual(7)
+    })
 })

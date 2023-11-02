@@ -63,4 +63,23 @@ describe("walk", ()=> {
     })
 })
 
+describe("feed", ()=>{
+
+    test("feed", ()=>{
+        const pet = new Pet('Fido')
+        pet.growUp()
+        pet.feed()
+        expect(pet.hunger).toEqual(2)
+    })
+
+    test("feed", ()=>{
+        const pet = new Pet('Fido')
+        pet.growUp()
+        pet.feed()
+        pet.feed()
+        expect(pet.hunger).toEqual(0)
+    })
+    
+})
+
 

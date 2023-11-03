@@ -82,4 +82,33 @@ describe("feed", ()=>{
     
 })
 
+describe("checkUp", ()=>{
+    
+    test("checkUp", ()=>{
+        const pet = new Pet('Fido')
+        pet.fitness = 3
+        expect(pet.checkUp()).toEqual("I need a walk")
+    })
+
+    test("checkUp", ()=>{
+        const pet = new Pet('Fido')
+        pet.hunger = 6
+        expect(pet.checkUp()).toEqual("I am hungry")
+    })
+
+    test("checkUp", ()=>{
+        const pet = new Pet('Fido')
+        pet.fitness = 3
+        pet.hunger = 6
+        expect(pet.checkUp()).toEqual("I am hungry AND I need a walk")
+    })
+
+    test("checkUp", ()=>{
+        const pet = new Pet('Fido')
+        pet.fitness = 6
+        pet.hunger = 3
+        expect(pet.checkUp()).toEqual("I feel great!")
+    })
+})
+
 

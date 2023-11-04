@@ -9,13 +9,27 @@ function Pet (name) {
     this.fitness = MAXIMUM_FITNESS
 }
 
+Pet.prototype = {
+    get isAlive(){
+        return this.age < 30 && this.hunger < 10 && this.fitness > 0;
+    }
+}
+
 Pet.prototype.growUp = function() {
+
+    if (!this.isAlive){
+        throw new Error('Your pet is no longer alive :(')
+    }
         this.age++;
         this.hunger+=5;
         this.fitness-=3;
     }
 
 Pet.prototype.walk = function() {
+
+    if (!this.isAlive){
+        throw new Error('Your pet is no longer alive :(')
+    }
     if (this.fitness+4<=MAXIMUM_FITNESS) {
         this.fitness+=4
     }
@@ -25,6 +39,9 @@ Pet.prototype.walk = function() {
 }
 
 Pet.prototype.feed = function() {
+    if (!this.isAlive) {
+        throw new Error('Your pet is no longer alive :(');
+      }
     if (this.hunger-3>=MIN_HUNGER){
         this.hunger-=3
     }    

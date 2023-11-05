@@ -150,6 +150,16 @@ describe("isAlive", ()=>{
     })
 })
 
+describe("parent can adopt child", ()=>{
+
+    test('adoptChild', ()=>{
+        const parent = new Pet('Jak')
+        const child = new Pet('Zak')
+        parent.adoptChild(child)
+        expect(parent.children).toEqual([child])
+    })
+})
+
 
 
 

@@ -80,8 +80,5 @@ Pet.prototype.haveBaby = function(name) {
 }
 
 
-
-
-
 module.exports = Pet
 

@@ -154,6 +154,11 @@ describe("parent can adopt child", ()=>{
 
     test('adoptChild', ()=>{
         const parent = new Pet('Jak')
+        expect(parent.children).toEqual([])
+    })
+
+    test('adoptChild', ()=>{
+        const parent = new Pet('Jak')
         const child = new Pet('Zak')
         parent.adoptChild(child)
         expect(parent.children).toEqual([child])
@@ -161,6 +166,11 @@ describe("parent can adopt child", ()=>{
 })
 
 describe('parent can have baby', ()=>{
+
+    test('haveBaby', ()=>{
+        const parent = new Pet('Jak')
+        expect(parent.children).toEqual([])
+    })
 
     test('haveBaby', ()=>{
         const parent = new Pet('Jak')

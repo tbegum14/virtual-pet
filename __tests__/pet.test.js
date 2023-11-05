@@ -160,6 +160,15 @@ describe("parent can adopt child", ()=>{
     })
 })
 
+describe('parent can have baby', ()=>{
+
+    test('haveBaby', ()=>{
+        const parent = new Pet('Jak')
+        parent.haveBaby('Zak')
+        expect(parent.children[0].name).toEqual('Zak')
+    })
+})
+
 
 
 

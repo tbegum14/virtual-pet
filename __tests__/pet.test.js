@@ -17,7 +17,7 @@ describe("constructor", ()=>{
     })
 })
 
-describe("growUp", ()=>{
+describe("growUp function", ()=>{
 
     test("increments age by 1", ()=>{
         const pet = new Pet("Fido")
@@ -70,11 +70,9 @@ describe("walk", ()=> {
 
     test('throws an error if the pet is not alive', () => {
         const pet = new Pet('Fido');
-  
         pet.fitness = -1;
-  
         expect(()=>pet.walk()).toThrow('Your pet is no longer alive :(');
-      });
+    });
 })
 
 describe("feed", ()=>{
@@ -96,11 +94,9 @@ describe("feed", ()=>{
 
     test('throws an error if the pet is not alive', () => {
         const pet = new Pet('Fido');
-  
         pet.age = 30;
-  
         expect(()=>pet.feed()).toThrow('Your pet is no longer alive :(');
-      });
+    });
     
 })
 

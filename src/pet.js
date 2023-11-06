@@ -42,7 +42,7 @@ Pet.prototype.walk = function() {
 Pet.prototype.feed = function() {
     if (!this.isAlive) {
         throw new Error('Your pet is no longer alive :(');
-      }
+    }
     if (this.hunger-3>=MIN_HUNGER){
         this.hunger-=3
     }    

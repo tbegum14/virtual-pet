@@ -1,42 +1,42 @@
 const Pet = require("../src/pet");
 
 describe("constructor", () => {
-  test("returns an object", () => {
+  test("instantiation of Pet returns an object", () => {
     expect(new Pet("Fido")).toBeInstanceOf(Object);
   });
 
-  test("returns the name", () => {
+  test("pet has name property", () => {
     const pet = new Pet("Fido");
     expect(pet.name).toEqual("Fido");
   });
 
-  test("returns initial age as 0", () => {
+  test("pet property of age has initial value of 0", () => {
     const pet = new Pet("Fido");
     expect(pet.age).toEqual(0);
   });
 });
 
 describe("growUp function", () => {
-  test("increments age by 1", () => {
+  test("function increments age by 1", () => {
     const pet = new Pet("Fido");
     pet.growUp();
     expect(pet.age).toEqual(1);
   });
 
-  test("increments age by 2", () => {
+  test("function increments age by 2 when called twice", () => {
     const pet = new Pet("Fido");
     pet.growUp();
     pet.growUp();
     expect(pet.age).toEqual(2);
   });
 
-  test("growUp function increments hunger by 5", () => {
+  test("function increments hunger by 5", () => {
     const pet = new Pet("Fido");
     pet.growUp();
     expect(pet.hunger).toEqual(5);
   });
 
-  test("growUp function decrements fitness by 3", () => {
+  test("function decrements fitness by 3", () => {
     const pet = new Pet("Fido");
     pet.growUp();
     expect(pet.fitness).toEqual(7);
@@ -49,15 +49,15 @@ describe("growUp function", () => {
   });
 });
 
-describe("walk", () => {
-  test("walk", () => {
+describe("walk function", () => {
+  test("increases fitness by 4", () => {
     const pet = new Pet("Fido");
     pet.fitness = 4;
     pet.walk();
     expect(pet.fitness).toEqual(8);
   });
 
-  test("walk", () => {
+  test("fitness does not go above 10", () => {
     const pet = new Pet("Fido");
     pet.fitness = 7;
     pet.walk();
@@ -71,15 +71,15 @@ describe("walk", () => {
   });
 });
 
-describe("feed", () => {
-  test("feed", () => {
+describe("feed function", () => {
+  test("feed reduces hunger by 3", () => {
     const pet = new Pet("Fido");
     pet.growUp();
     pet.feed();
     expect(pet.hunger).toEqual(2);
   });
 
-  test("feed", () => {
+  test("feed does not reduce hunger below 0", () => {
     const pet = new Pet("Fido");
     pet.growUp();
     pet.feed();
@@ -94,27 +94,27 @@ describe("feed", () => {
   });
 });
 
-describe("checkUp", () => {
-  test("checkUp", () => {
+describe("checkUp function", () => {
+  test("checkUp notifies if fitness is 3 or under", () => {
     const pet = new Pet("Fido");
     pet.fitness = 3;
     expect(pet.checkUp()).toEqual("I need a walk");
   });
 
-  test("checkUp", () => {
+  test("checkUp notifies in hunger is above 5", () => {
     const pet = new Pet("Fido");
     pet.hunger = 6;
     expect(pet.checkUp()).toEqual("I am hungry");
   });
 
-  test("checkUp", () => {
+  test("checkUp notifies if fitness is 3 or under and hunger is above 5", () => {
     const pet = new Pet("Fido");
     pet.fitness = 3;
     pet.hunger = 6;
     expect(pet.checkUp()).toEqual("I am hungry AND I need a walk");
   });
 
-  test("checkUp", () => {
+  test("checkUp notifies that fitness is above 3 and hunger is below 5", () => {
     const pet = new Pet("Fido");
     pet.fitness = 6;
     pet.hunger = 3;
@@ -122,15 +122,15 @@ describe("checkUp", () => {
   });
 });
 
-describe("isAlive", () => {
-  test("isAlive", () => {
+describe("isAlive property", () => {
+  test("isAlive returns true when fitness is above 0 and hunger is below 10", () => {
     const pet = new Pet("Fido");
     pet.fitness = 2;
     pet.hunger = 8;
     expect(pet.isAlive).toBeTruthy();
   });
 
-  test("isAlive", () => {
+  test("isAlive returns false if fitness is below 0 and hunger is above 10", () => {
     const pet = new Pet("Fido");
     pet.fitness = -1;
     pet.hunger = 11;
@@ -139,12 +139,12 @@ describe("isAlive", () => {
 });
 
 describe("parent can adopt child", () => {
-  test("adoptChild", () => {
+  test("instance of Pet has children array", () => {
     const parent = new Pet("Jak");
     expect(parent.children).toEqual([]);
   });
 
-  test("adoptChild", () => {
+  test("adoptChild moves child into children array", () => {
     const parent = new Pet("Jak");
     const child = new Pet("Zak");
     parent.adoptChild(child);
@@ -153,12 +153,7 @@ describe("parent can adopt child", () => {
 });
 
 describe("parent can have baby", () => {
-  test("haveBaby", () => {
-    const parent = new Pet("Jak");
-    expect(parent.children).toEqual([]);
-  });
-
-  test("haveBaby", () => {
+  test("haveBaby creates an instance of a pet as a child of the parent", () => {
     const parent = new Pet("Jak");
     parent.haveBaby("Zak");
     expect(parent.children[0].name).toEqual("Zak");
